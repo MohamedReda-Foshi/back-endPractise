@@ -5,14 +5,17 @@ import {connection} from "./config/database.js"
 
 // Middleware to parse JSON requests
 const app = express();
-connection();
+
+// Connect to the  database
+connection(app);
 
 app.use(express.json());
 
 app.get("/",(req,res)=>{
-    res.send("Hello World");
+    res.render("index.ejs");
 });
 
 
 app.use('/tasks',task);
+
 export default app;
